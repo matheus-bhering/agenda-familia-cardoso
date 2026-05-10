@@ -1698,7 +1698,7 @@
     if (ok) showSuccessToast();
   });
 </script>
-  <script>
+ <script>
   // =========================
   // AUTO LOGOUT POR INATIVIDADE
   // =========================
@@ -1708,33 +1708,29 @@
   let inactivityTimer;
 
   function voltarParaLogin() {
-    // Mostra tela de login
-    const loginScreen = document.getElementById('loginScreen');
-    if (loginScreen) {
-      loginScreen.classList.remove('hide');
-    }
 
-    // Esconde conteúdo principal
-    const appContent = document.getElementById('appContent');
-    if (appContent) {
-      appContent.classList.remove('visible');
-      appContent.style.display = 'none';
-    }
+    // Remove sessão salva
+    sessionStorage.removeItem(SESSION_KEY);
 
-    // Limpa campo de senha
-    const passwordInput = document.querySelector('#loginScreen input');
-    if (passwordInput) {
-      passwordInput.value = '';
-    }
+    // ESCONDE O APP
+    appContent.classList.remove('visible');
 
-    // Foca no campo de senha
+    // MOSTRA LOGIN NOVAMENTE
+    loginScreen.style.display = 'flex';
+
     setTimeout(() => {
-      if (passwordInput) {
-        passwordInput.focus();
-      }
-    }, 200);
+      loginScreen.classList.remove('hide');
+    }, 10);
 
-    // Mensagem
+    // LIMPA SENHA
+    pwInput.value = '';
+
+    // FOCA NO INPUT
+    setTimeout(() => {
+      pwInput.focus();
+    }, 300);
+
+    // ALERTA
     alert('Sessão encerrada por inatividade.');
   }
 
@@ -1746,7 +1742,7 @@
     }, TEMPO_INATIVIDADE);
   }
 
-  // Eventos considerados atividade do usuário
+  // EVENTOS DE ATIVIDADE
   [
     'click',
     'touchstart',
@@ -1757,8 +1753,9 @@
     document.addEventListener(evento, resetarTimerInatividade, true);
   });
 
-  // Inicia contador
-    resetarTimerInatividade();
+  // INICIA TIMER
+  resetarTimerInatividade();
+
 </script>
 </body>
 </html>
