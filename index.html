@@ -1319,19 +1319,11 @@
 
   function unlock() {
     sessionStorage.setItem(SESSION_KEY, '1');
-
     loginScreen.classList.add('hide');
-    setTimeout(() => {
-        loginScreen.style.display = 'none';
-    }, 420);
-
+    setTimeout(() => { loginScreen.style.display = 'none'; }, 420);
     appContent.classList.add('visible');
-
-    // INICIA / REINICIA O TIMER
-    resetarTimerInatividade();
-
     loadContacts();
-}
+  }
 
   function tryLogin() {
     const val = pwInput.value;
@@ -1698,64 +1690,6 @@
     if (ok) showSuccessToast();
   });
 </script>
- <script>
-  // =========================
-  // AUTO LOGOUT POR INATIVIDADE
-  // =========================
 
-  const TEMPO_INATIVIDADE = 1 * 60 * 1000; // 1 minuto
-
-  let inactivityTimer;
-
-  function voltarParaLogin() {
-
-    // Remove sessão salva
-    sessionStorage.removeItem(SESSION_KEY);
-
-    // ESCONDE O APP
-    appContent.classList.remove('visible');
-
-    // MOSTRA LOGIN NOVAMENTE
-    loginScreen.style.display = 'flex';
-
-    setTimeout(() => {
-      loginScreen.classList.remove('hide');
-    }, 10);
-
-    // LIMPA SENHA
-    pwInput.value = '';
-
-    // FOCA NO INPUT
-    setTimeout(() => {
-      pwInput.focus();
-    }, 300);
-
-    // ALERTA
-    alert('Sessão encerrada por inatividade.');
-  }
-
-  function resetarTimerInatividade() {
-    clearTimeout(inactivityTimer);
-
-    inactivityTimer = setTimeout(() => {
-      voltarParaLogin();
-    }, TEMPO_INATIVIDADE);
-  }
-
-  // EVENTOS DE ATIVIDADE
-  [
-    'click',
-    'touchstart',
-    'mousemove',
-    'keydown',
-    'scroll'
-  ].forEach(evento => {
-    document.addEventListener(evento, resetarTimerInatividade, true);
-  });
-
-  // INICIA TIMER
-  resetarTimerInatividade();
-
-</script>
 </body>
 </html>
