@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Agenda · Família Cardoso</title>
+  <title>Agenda · Família Cardoso · </title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
@@ -398,6 +398,116 @@
 
     .refresh-btn:hover { background: var(--verde-medio); }
     .refresh-btn:active { transform: scale(0.96); }
+
+    .toolbar {
+      padding: 0 1.25rem;
+      margin-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn, .download-menu-btn, .download-option {
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .tab-btn {
+      border: 1.5px solid var(--borda);
+      background: var(--card-bg);
+      color: var(--texto);
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .tab-btn.active {
+      background: var(--verde-escuro);
+      color: #fff;
+      border-color: var(--verde-escuro);
+    }
+
+    .tab-btn[data-tab="Agregados"].active { background: #b8860b; border-color: #b8860b; }
+
+    .download-wrap { position: relative; }
+
+    .download-menu-btn {
+      background: var(--verde);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(29,158,117,0.28);
+    }
+
+    .download-panel {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      right: 0;
+      min-width: 220px;
+      background: var(--card-bg);
+      border: 1.5px solid var(--borda);
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+      padding: 0.45rem;
+      display: none;
+      z-index: 50;
+    }
+
+    .download-panel.open { display: block; }
+
+    .download-option {
+      width: 100%;
+      text-align: left;
+      border: none;
+      background: transparent;
+      color: var(--texto);
+      padding: 0.8rem 0.85rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+
+    .download-option:hover { background: var(--verde-claro); }
+
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.85rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.82);
+      font-size: 0.78rem;
+      letter-spacing: 0.4px;
+    }
+
+    @media (max-width: 640px) {
+      .toolbar { align-items: stretch; }
+      .download-wrap, .download-menu-btn { width: 100%; }
+      .download-menu-btn { justify-content: center; }
+      .download-panel { left: 0; right: 0; min-width: auto; }
+    }
+
 
     .refresh-icon { width: 14px; height: 14px; stroke: #fff; stroke-width: 2.5; fill: none; }
 
@@ -1094,10 +1204,12 @@
       <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
       Família Cardoso
     </div>
-    <h1>Nossa <span>Agenda v1.0.0</span></h1>
+    <h1>Nossa <span>Agenda v1.0.1</span></h1>
     <p>Todos os contatos da família em um só lugar</p>
   </div>
-</header>
+  <div class="version-badge">Versão do site · <strong>v1.0.1</strong></div>
+      </div>
+    </header>
 
 <div class="search-wrap">
   <div class="search-box">
@@ -1108,6 +1220,27 @@
     <button class="clear-btn" id="clearBtn" aria-label="Limpar busca">✕</button>
   </div>
 </div>
+
+<section class="toolbar">
+      <div class="tabs" id="tabsBar">
+        <button class="tab-btn active" data-tab="Todos">Todos</button>
+        <button class="tab-btn" data-tab="Tios">Tios</button>
+        <button class="tab-btn" data-tab="Primos">Primos</button>
+        <button class="tab-btn" data-tab="Agregados">Agregados</button>
+      </div>
+      <div class="download-wrap">
+        <button class="download-menu-btn" id="downloadMenuBtn" type="button">
+          Baixar contatos
+          <span>▾</span>
+        </button>
+        <div class="download-panel" id="downloadPanel">
+          <button class="download-option" data-download="Todos">Baixar todos</button>
+          <button class="download-option" data-download="Tios">Baixar Tios</button>
+          <button class="download-option" data-download="Primos">Baixar Primos</button>
+          <button class="download-option" data-download="Agregados">Baixar Agregados</button>
+        </div>
+      </div>
+    </section>
 
 <div class="stats-bar">
   <span class="stats-count" id="statsCount">Carregando...</span>
@@ -1693,3 +1826,108 @@
 
 </body>
 </html>
+
+
+    let activeCategory = 'Todos';
+
+    function getCategoryValue(contact) {
+      return (contact.categoria || contact.category || '—').trim();
+    }
+
+    function filterContactsByCategory(contacts, category) {
+      if (category === 'Todos') return contacts;
+      return contacts.filter(contact => getCategoryValue(contact) === category);
+    }
+
+    function formatPhoneDisplay(phone) {
+      const digits = String(phone || '').replace(/\D/g, '');
+      if (digits.length === 11) return `(${digits.slice(0,2)}) ${digits.slice(2,7)}-${digits.slice(7)}`;
+      if (digits.length === 10) return `(${digits.slice(0,2)}) ${digits.slice(2,6)}-${digits.slice(6)}`;
+      return phone || '';
+    }
+
+    function getWhatsappUrl(contact) {
+      const raw = String(contact.linkWhatsApp || contact.link_whatsapp || contact.whatsapp || '').trim();
+      if (raw) return raw;
+      const digits = String(contact.telefone || contact.phone || '').replace(/\D/g, '');
+      if (!digits) return '';
+      const full = digits.startsWith('55') ? digits : `55${digits}`;
+      return `https://wa.me/${full}`;
+    }
+
+    function buildCopyText(contact) {
+      const name = contact.nome || contact.name || '';
+      const phone = formatPhoneDisplay(contact.telefone || contact.phone || '');
+      const wa = getWhatsappUrl(contact);
+      return `${name}
+${phone}
+Clique no link para conversar diretamente pelo WhatsApp com "${name}".
+[${wa}](${wa})`;
+    }
+
+    function downloadContacts(category) {
+      const searchTerm = (document.getElementById('searchInput')?.value || '').trim().toLowerCase();
+      let base = filterContactsByCategory(allContacts || contacts || [], category);
+      if (searchTerm) {
+        base = base.filter(contact => {
+          const hay = [contact.nome, contact.telefone, contact.categoria, contact.linkWhatsApp].join(' ').toLowerCase();
+          return hay.includes(searchTerm);
+        });
+      }
+      if (!base.length) {
+        alert('Nenhum contato encontrado para baixar nessa seleção.');
+        return;
+      }
+      const rows = base.map(contact => {
+        const name = contact.nome || '';
+        const phone = formatPhoneDisplay(contact.telefone || '');
+        const categoryName = getCategoryValue(contact);
+        const wa = getWhatsappUrl(contact);
+        return `${name}
+${phone}
+Categoria: ${categoryName}
+${wa}`;
+      });
+      const blob = new Blob([rows.join('
+
+')], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const suffix = category === 'Todos' ? 'todos' : category.toLowerCase();
+      a.href = url;
+      a.download = `agenda-familia-cardoso-${suffix}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function setupTabsAndDownloads() {
+      const tabs = document.querySelectorAll('.tab-btn');
+      tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeCategory = btn.dataset.tab;
+          tabs.forEach(item => item.classList.toggle('active', item === btn));
+          if (typeof renderContacts === 'function') renderContacts();
+        });
+      });
+
+      const menuBtn = document.getElementById('downloadMenuBtn');
+      const panel = document.getElementById('downloadPanel');
+      if (menuBtn && panel) {
+        menuBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          panel.classList.toggle('open');
+        });
+        document.addEventListener('click', (e) => {
+          if (!panel.contains(e.target) && e.target !== menuBtn) panel.classList.remove('open');
+        });
+      }
+
+      document.querySelectorAll('[data-download]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          downloadContacts(btn.dataset.download);
+          panel?.classList.remove('open');
+        });
+      });
+    }
