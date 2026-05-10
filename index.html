@@ -1319,11 +1319,19 @@
 
   function unlock() {
     sessionStorage.setItem(SESSION_KEY, '1');
+
     loginScreen.classList.add('hide');
-    setTimeout(() => { loginScreen.style.display = 'none'; }, 420);
+    setTimeout(() => {
+        loginScreen.style.display = 'none';
+    }, 420);
+
     appContent.classList.add('visible');
+
+    // INICIA / REINICIA O TIMER
+    resetarTimerInatividade();
+
     loadContacts();
-  }
+}
 
   function tryLogin() {
     const val = pwInput.value;
@@ -1690,6 +1698,67 @@
     if (ok) showSuccessToast();
   });
 </script>
+  <script>
+  // =========================
+  // AUTO LOGOUT POR INATIVIDADE
+  // =========================
 
+  const TEMPO_INATIVIDADE = 5 * 60 * 1000; // 5 minutos
+
+  let inactivityTimer;
+
+  function voltarParaLogin() {
+    // Mostra tela de login
+    const loginScreen = document.getElementById('loginScreen');
+    if (loginScreen) {
+      loginScreen.classList.remove('hide');
+    }
+
+    // Esconde conteúdo principal
+    const appContent = document.getElementById('appContent');
+    if (appContent) {
+      appContent.classList.remove('visible');
+      appContent.style.display = 'none';
+    }
+
+    // Limpa campo de senha
+    const passwordInput = document.querySelector('#loginScreen input');
+    if (passwordInput) {
+      passwordInput.value = '';
+    }
+
+    // Foca no campo de senha
+    setTimeout(() => {
+      if (passwordInput) {
+        passwordInput.focus();
+      }
+    }, 200);
+
+    // Mensagem
+    alert('Sessão encerrada por inatividade.');
+  }
+
+  function resetarTimerInatividade() {
+    clearTimeout(inactivityTimer);
+
+    inactivityTimer = setTimeout(() => {
+      voltarParaLogin();
+    }, TEMPO_INATIVIDADE);
+  }
+
+  // Eventos considerados atividade do usuário
+  [
+    'click',
+    'touchstart',
+    'mousemove',
+    'keydown',
+    'scroll'
+  ].forEach(evento => {
+    document.addEventListener(evento, resetarTimerInatividade, true);
+  });
+
+  // Inicia contador
+    resetarTimerInatividade();
+</script>
 </body>
 </html>
