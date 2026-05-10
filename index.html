@@ -1054,6 +1054,57 @@
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
     }
+
+    /* ABAS */
+    .tabs-wrap { padding: 0 1.25rem; margin-top: 1.5rem; margin-bottom: 0.25rem; display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .tabs-wrap::-webkit-scrollbar { display: none; }
+    .tab-btn { flex-shrink: 0; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--borda); background: var(--card-bg); color: var(--texto-suave); font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .tab-btn:active { transform: scale(0.95); }
+    .tab-btn.active { background: var(--verde); border-color: var(--verde); color: #fff; }
+    body.dark .tab-btn { background: #162820; border-color: #1e3329; color: var(--texto-suave); }
+    body.dark .tab-btn.active { background: var(--verde); border-color: var(--verde); color: #fff; }
+
+    /* BADGE CATEGORIA */
+    .categoria-badge { display: inline-flex; align-items: center; font-size: 0.68rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; margin-top: 4px; letter-spacing: 0.3px; }
+    .categoria-badge.tios { background: #e8f4ff; color: #185FA5; }
+    .categoria-badge.primos { background: #FFF3E0; color: #B45309; }
+    .categoria-badge.agregados { background: #F3E8FF; color: #6B21A8; }
+    body.dark .categoria-badge.tios { background: #0a1e30; color: #85B7EB; }
+    body.dark .categoria-badge.primos { background: #2a1e0a; color: #FDBA74; }
+    body.dark .categoria-badge.agregados { background: #1e0a2a; color: #C084FC; }
+
+    /* BOTÃO BAIXAR */
+    .download-btn { background: transparent; border: 1.5px solid var(--borda); border-radius: 10px; padding: 8px 14px; font-size: 0.82rem; color: var(--texto-suave); cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: all 0.15s; }
+    .download-btn:hover { border-color: var(--verde); color: var(--verde); }
+    .download-btn:active { transform: scale(0.96); }
+    .download-btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none; flex-shrink: 0; }
+    body.dark .download-btn { border-color: #1e3329; color: var(--texto-suave); }
+    body.dark .download-btn:hover { border-color: #3db88a; color: #3db88a; }
+    .stats-actions { display: flex; gap: 8px; align-items: center; }
+
+    /* MODAL DOWNLOAD */
+    .download-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 350; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(4px); padding: 1.5rem; }
+    .download-modal-overlay.open { opacity: 1; pointer-events: auto; }
+    .download-modal-card { background: var(--card-bg); border-radius: 24px; padding: 1.75rem 1.5rem; width: 100%; max-width: 360px; transform: scale(0.92) translateY(16px); transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1); box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+    .download-modal-overlay.open .download-modal-card { transform: scale(1) translateY(0); }
+    .download-modal-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--texto); margin-bottom: 0.3rem; }
+    .download-modal-sub { font-size: 0.82rem; color: var(--texto-suave); margin-bottom: 1.4rem; line-height: 1.5; }
+    .download-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1rem; }
+    .dl-option-btn { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 14px; border: 2px solid var(--borda); background: var(--card-bg); cursor: pointer; font-family: 'DM Sans', sans-serif; text-align: left; transition: all 0.15s; width: 100%; }
+    .dl-option-btn:hover { border-color: var(--verde); background: var(--verde-claro); }
+    .dl-option-btn:active { transform: scale(0.97); }
+    .dl-option-icon { width: 40px; height: 40px; border-radius: 12px; background: var(--verde-claro); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .dl-option-icon svg { width: 20px; height: 20px; stroke: var(--verde-escuro); stroke-width: 2; fill: none; }
+    .dl-option-text strong { display: block; font-size: 0.92rem; font-weight: 600; color: var(--texto); margin-bottom: 2px; }
+    .dl-option-text span { font-size: 0.78rem; color: var(--texto-suave); }
+    body.dark .dl-option-btn:hover { background: #0d2b22; border-color: #3db88a; }
+    body.dark .dl-option-icon { background: #0d2b22; }
+    .download-modal-cancel { width: 100%; padding: 0.85rem; border: none; border-radius: 12px; background: transparent; color: var(--texto-suave); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: background 0.15s; }
+    .download-modal-cancel:hover { background: var(--verde-claro); }
+
+    /* FOOTER VERSION */
+    .footer-version { display: inline-block; margin-top: 0.4rem; font-size: 0.68rem; background: var(--verde-claro); color: var(--verde-medio); padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+    body.dark .footer-version { background: #0d2b22; color: #3db88a; }
   </style>
 </head>
 <body>
@@ -1099,6 +1150,14 @@
   </div>
 </header>
 
+<!-- ABAS -->
+<div class="tabs-wrap">
+  <button class="tab-btn active" data-tab="todos">👥 Todos</button>
+  <button class="tab-btn" data-tab="tios">🧑‍🦳 Tios</button>
+  <button class="tab-btn" data-tab="primos">🧑 Primos</button>
+  <button class="tab-btn" data-tab="agregados">💍 Agregados</button>
+</div>
+
 <div class="search-wrap">
   <div class="search-box">
     <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -1111,10 +1170,16 @@
 
 <div class="stats-bar">
   <span class="stats-count" id="statsCount">Carregando...</span>
-  <button class="refresh-btn" onclick="loadContacts()" title="Atualizar dados">
-    <svg class="refresh-icon" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-5"/></svg>
-    Atualizar
-  </button>
+  <div class="stats-actions">
+    <button class="download-btn" id="openDownloadModal" title="Baixar contatos">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Baixar
+    </button>
+    <button class="refresh-btn" onclick="loadContacts()" title="Atualizar dados">
+      <svg class="refresh-icon" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-5"/></svg>
+      Atualizar
+    </button>
+  </div>
 </div>
 
 <div class="help-tip">
@@ -1133,7 +1198,35 @@
 <footer>
   Agenda da <span>Família Cardoso</span>
   <p>Criado por Matheus Bhering (31) 9 9513-5007</p>
+  <span class="footer-version">v1.0.1</span>
 </footer>
+
+<!-- MODAL DOWNLOAD -->
+<div class="download-modal-overlay" id="downloadModalOverlay">
+  <div class="download-modal-card">
+    <div class="download-modal-title">📥 Baixar Contatos</div>
+    <p class="download-modal-sub">Escolha quais contatos deseja baixar em formato VCF (compatível com qualquer celular).</p>
+    <div class="download-options">
+      <button class="dl-option-btn" onclick="downloadContacts('todos')">
+        <div class="dl-option-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="dl-option-text"><strong>Todos os contatos</strong><span>Baixa a agenda completa da família</span></div>
+      </button>
+      <button class="dl-option-btn" onclick="downloadContacts('tios')">
+        <div class="dl-option-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="dl-option-text"><strong>Apenas Tios</strong><span>Baixa somente os contatos da categoria Tios</span></div>
+      </button>
+      <button class="dl-option-btn" onclick="downloadContacts('primos')">
+        <div class="dl-option-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0 1 13 0"/></svg></div>
+        <div class="dl-option-text"><strong>Apenas Primos</strong><span>Baixa somente os contatos da categoria Primos</span></div>
+      </button>
+      <button class="dl-option-btn" onclick="downloadContacts('agregados')">
+        <div class="dl-option-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="dl-option-text"><strong>Apenas Agregados</strong><span>Baixa somente os contatos da categoria Agregados</span></div>
+      </button>
+    </div>
+    <button class="download-modal-cancel" id="closeDownloadModal">Cancelar</button>
+  </div>
+</div>
 
 <!-- ==================== FAB SUGESTÃO ==================== -->
 <button class="fab-suggest" id="fabSuggest">
@@ -1254,23 +1347,17 @@
 </div><!-- /appContent -->
 
 <script>
-  // =====================================================================
-  //  ⚠️  COLE AQUI a URL do seu Google Apps Script (veja instruções)
-  // =====================================================================
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyrTsR5nHsEaKmYqC8zrCfYnNJS8DF07_UFTeEFOeDQhFqKAHiaqak-8yMFww2KzQ/exec';
-
-  // =====================================================================
-  //  PLANILHA CSV (leitura)
-  // =====================================================================
   const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTTAlXlYNqZF0eS2bSw-yViq0ftNGCzaMnd7L8xDk1htXnAYS6vPArVYM8ncWjP1nKF2PvFc2_KIdl-/pub?gid=0&single=true&output=csv';
 
-  const COL_NOME = 'Nome';
-  const COL_TELEFONE = 'Telefone';
-  const COL_WHATS = 'Link_WhatsApp';
+  const COL_NOME      = 'Nome';
+  const COL_TELEFONE  = 'Telefone';
+  const COL_WHATS     = 'Link_WhatsApp';
+  const COL_CATEGORIA = 'Categoria';
 
-  // ==================== LOGIN ====================
+  // ── LOGIN ──────────────────────────────────────────────────
   const SENHA_CORRETA = 'Helena';
-  const SESSION_KEY = 'fc_auth';
+  const SESSION_KEY   = 'fc_auth';
 
   const loginScreen = document.getElementById('loginScreen');
   const appContent  = document.getElementById('appContent');
@@ -1281,7 +1368,6 @@
   const eyeIcon     = document.getElementById('eyeIcon');
 
   let pwVisible = false;
-
   togglePw.addEventListener('click', () => {
     pwVisible = !pwVisible;
     pwInput.style.webkitTextSecurity = pwVisible ? 'none' : 'disc';
@@ -1291,34 +1377,29 @@
       : '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
   });
 
-  // ==================== TEMA ====================
-  const themeBtn  = document.getElementById('themeBtn');
-  const themeIcon = document.getElementById('themeIcon');
-  const THEME_KEY = 'fc_theme';
-
+  // ── TEMA ───────────────────────────────────────────────────
+  const themeBtn   = document.getElementById('themeBtn');
+  const themeIcon  = document.getElementById('themeIcon');
+  const themeLabel = document.getElementById('themeLabel');
+  const THEME_KEY  = 'fc_theme';
   const moonSVG = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
   const sunSVG  = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
-  const themeLabel = document.getElementById('themeLabel');
 
   function applyTheme(dark) {
     document.body.classList.toggle('dark', dark);
     themeIcon.innerHTML = dark ? sunSVG : moonSVG;
     themeLabel.textContent = dark ? 'Modo Claro' : 'Modo Escuro';
-    localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light');
+    try { localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light'); } catch(e) {}
   }
-
   themeBtn.addEventListener('click', () => applyTheme(!document.body.classList.contains('dark')));
-
-  const savedTheme = localStorage.getItem(THEME_KEY);
+  let savedTheme = null;
+  try { savedTheme = localStorage.getItem(THEME_KEY); } catch(e) {}
   if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     applyTheme(true);
-  } else {
-    themeIcon.innerHTML = moonSVG;
-    themeLabel.textContent = 'Modo Escuro';
-  }
+  } else { themeIcon.innerHTML = moonSVG; themeLabel.textContent = 'Modo Escuro'; }
 
   function unlock() {
-    sessionStorage.setItem(SESSION_KEY, '1');
+    try { sessionStorage.setItem(SESSION_KEY, '1'); } catch(e) {}
     loginScreen.classList.add('hide');
     setTimeout(() => { loginScreen.style.display = 'none'; }, 420);
     appContent.classList.add('visible');
@@ -1328,28 +1409,22 @@
   function tryLogin() {
     const val = pwInput.value;
     if (val.toLowerCase() === SENHA_CORRETA.toLowerCase()) {
-      loginError.classList.add('hidden');
-      unlock();
+      loginError.classList.add('hidden'); unlock();
     } else {
-      loginError.classList.remove('hidden');
-      pwInput.value = '';
-      pwInput.focus();
+      loginError.classList.remove('hidden'); pwInput.value = ''; pwInput.focus();
       pwInput.style.borderColor = '#F09595';
       setTimeout(() => { pwInput.style.borderColor = ''; }, 1200);
     }
   }
-
   loginBtn.addEventListener('click', tryLogin);
   pwInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+  let alreadyAuth = false;
+  try { alreadyAuth = !!sessionStorage.getItem(SESSION_KEY); } catch(e) {}
+  if (alreadyAuth) { unlock(); } else { setTimeout(() => pwInput.focus(), 300); }
 
-  if (sessionStorage.getItem(SESSION_KEY)) {
-    unlock();
-  } else {
-    setTimeout(() => pwInput.focus(), 300);
-  }
-
-  // ==================== CONTATOS ====================
+  // ── CONTATOS ───────────────────────────────────────────────
   let allContacts = [];
+  let activeTab   = 'todos';
 
   function getInitials(name) {
     const parts = name.trim().split(/\s+/);
@@ -1371,6 +1446,15 @@
     return 'https://wa.me/' + num;
   }
 
+  function normalizarCategoria(cat) {
+    if (!cat) return '';
+    const c = cat.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    if (c === 'tios' || c === 'tio') return 'tios';
+    if (c === 'primos' || c === 'primo') return 'primos';
+    if (c === 'agregados' || c === 'agregado') return 'agregados';
+    return '';
+  }
+
   function parseCSV(text) {
     const lines = text.trim().split('\n');
     if (lines.length < 2) return [];
@@ -1378,50 +1462,56 @@
     const iNome = headers.findIndex(h => h.toLowerCase() === COL_NOME.toLowerCase());
     const iTel  = headers.findIndex(h => h.toLowerCase() === COL_TELEFONE.toLowerCase());
     const iWa   = headers.findIndex(h => h.toLowerCase() === COL_WHATS.toLowerCase());
+    const iCat  = headers.findIndex(h => h.toLowerCase() === COL_CATEGORIA.toLowerCase());
     if (iNome === -1 || iTel === -1) return null;
     const contacts = [];
     for (let i = 1; i < lines.length; i++) {
       const cols = lines[i].split(',').map(c => c.replace(/^"|"$/g, '').trim());
       const nome = cols[iNome] || '';
       const tel  = cols[iTel]  || '';
-      const wa   = iWa !== -1 ? (cols[iWa] || '') : '';
-      if (nome && tel) contacts.push({ nome, telefone: tel, whatsapp: wa });
+      const wa   = iWa  !== -1 ? (cols[iWa]  || '') : '';
+      const cat  = iCat !== -1 ? (cols[iCat] || '') : '';
+      if (nome && tel) contacts.push({ nome, telefone: tel, whatsapp: wa, categoria: normalizarCategoria(cat) });
     }
     return contacts;
   }
 
   function escapeHtml(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-  function escapeJs(str) { return str.replace(/\\/g,'\\\\').replace(/'/g,"\\'"); }
+  function escapeJs(str)   { return str.replace(/\\/g,'\\\\').replace(/'/g,"\\'"); }
+
+  function getFilteredContacts() {
+    if (activeTab === 'todos') return allContacts;
+    return allContacts.filter(c => c.categoria === activeTab);
+  }
 
   function renderContacts(contacts) {
     const container = document.getElementById('contactsContainer');
-    const statsEl = document.getElementById('statsCount');
-
+    const statsEl   = document.getElementById('statsCount');
     if (!contacts.length) {
       container.innerHTML = '<div class="state-msg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><p><strong>Nenhum contato encontrado</strong>Tente buscar por outro nome.</p></div>';
-      statsEl.textContent = 'Nenhum resultado';
-      return;
+      statsEl.innerHTML = 'Nenhum resultado'; return;
     }
-
     const groups = {};
     contacts.forEach(c => {
       const letra = c.nome[0].toUpperCase();
       if (!groups[letra]) groups[letra] = [];
       groups[letra].push(c);
     });
-
     const sortedLetras = Object.keys(groups).sort();
     let html = '';
-
     sortedLetras.forEach(letra => {
       html += '<div class="group-label">' + letra + '</div><div class="contacts-list">';
       groups[letra].forEach((c, i) => {
         const initials = getInitials(c.nome);
-        const phone = formatPhone(c.telefone);
-        const waLink = whatsappLink(c.whatsapp, c.telefone);
+        const phone    = formatPhone(c.telefone);
+        const waLink   = whatsappLink(c.whatsapp, c.telefone);
         const rawPhone = c.telefone.replace(/\D/g, '');
+        const catBadge = c.categoria
+          ? '<span class="categoria-badge ' + c.categoria + '">' + c.categoria.charAt(0).toUpperCase() + c.categoria.slice(1) + '</span>'
+          : '';
         html += '<div class="contact-card" style="animation-delay:' + (i * 40) + 'ms">' +
-          '<div class="card-top"><div class="avatar">' + initials + '</div><div class="contact-info"><h3>' + escapeHtml(c.nome) + '</h3><p>' + escapeHtml(phone) + '</p></div></div>' +
+          '<div class="card-top"><div class="avatar">' + initials + '</div>' +
+          '<div class="contact-info"><h3>' + escapeHtml(c.nome) + '</h3><p>' + escapeHtml(phone) + '</p>' + catBadge + '</div></div>' +
           '<div class="card-actions">' +
             '<button class="copy-btn" onclick="copyContact(\'' + escapeJs(c.nome) + '\', \'' + escapeJs(phone) + '\', \'' + escapeJs(waLink) + '\')" aria-label="Copiar"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copiar</button>' +
             '<a href="tel:' + rawPhone + '" class="call-btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>Ligar</a>' +
@@ -1430,9 +1520,9 @@
       });
       html += '</div>';
     });
-
     container.innerHTML = html;
-    statsEl.innerHTML = '<strong>' + contacts.length + '</strong> contato' + (contacts.length !== 1 ? 's' : '');
+    const total = contacts.length;
+    statsEl.innerHTML = '<strong>' + total + '</strong> contato' + (total !== 1 ? 's' : '');
   }
 
   function showLoading() {
@@ -1445,12 +1535,13 @@
     document.getElementById('statsCount').textContent = 'Erro ao carregar';
   }
 
+  // ── CÓPIA FORMATADA ────────────────────────────────────────
   function copyContact(nome, telefone, waLink) {
-    const texto = nome + '\n' + telefone + '\n\nWhatsApp: ' + waLink;
+    const texto = nome + ' ' + telefone + '\nClique no link para conversar diretamente pelo WhatsApp com "' + nome + '".\n\n' + waLink;
     const btn = event.currentTarget;
     function done() {
       const toast = document.getElementById('copyToast');
-      toast.textContent = '\u2713 "' + nome + '" copiado!';
+      toast.textContent = '✓ "' + nome + '" copiado!';
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 2500);
       if (btn) {
@@ -1470,6 +1561,7 @@
     });
   }
 
+  // ── CARREGAR CONTATOS ──────────────────────────────────────
   async function loadContacts() {
     showLoading();
     document.getElementById('syncStatus').textContent = '';
@@ -1480,7 +1572,7 @@
       const contacts = parseCSV(text);
       if (contacts === null) { showError('Verifique colunas "' + COL_NOME + '" e "' + COL_TELEFONE + '".'); return; }
       allContacts = contacts.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
-      renderContacts(allContacts);
+      applyTabFilter();
       const now = new Date();
       document.getElementById('syncStatus').textContent = 'Última atualização: ' + now.toLocaleDateString('pt-BR') + ' às ' + now.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
     } catch (err) {
@@ -1491,25 +1583,81 @@
 
   function normalize(str) { return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim(); }
 
+  function applyTabFilter() {
+    const q = normalize(document.getElementById('searchInput').value);
+    let filtered = getFilteredContacts();
+    if (q) {
+      const terms = q.split(/\s+/).filter(Boolean);
+      filtered = filtered.filter(c => { const n = normalize(c.nome); return terms.every(t => n.includes(t)); });
+    }
+    renderContacts(filtered);
+  }
+
+  // ── ABAS ───────────────────────────────────────────────────
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeTab = btn.dataset.tab;
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearBtn').style.display = 'none';
+      applyTabFilter();
+    });
+  });
+
   const searchInput = document.getElementById('searchInput');
-  const clearBtn = document.getElementById('clearBtn');
+  const clearBtn    = document.getElementById('clearBtn');
 
   searchInput.addEventListener('input', () => {
     const q = normalize(searchInput.value);
     clearBtn.style.display = q ? 'flex' : 'none';
-    if (!q) { renderContacts(allContacts); return; }
-    const terms = q.split(/\s+/).filter(Boolean);
-    renderContacts(allContacts.filter(c => { const n = normalize(c.nome); return terms.every(t => n.includes(t)); }));
+    applyTabFilter();
   });
 
   clearBtn.addEventListener('click', () => {
     searchInput.value = ''; clearBtn.style.display = 'none';
-    renderContacts(allContacts); searchInput.focus();
+    applyTabFilter(); searchInput.focus();
   });
 
-  // =====================================================================
-  //  MODAL DE SUGESTÃO / CONTATO
-  // =====================================================================
+  // ── DOWNLOAD VCF ───────────────────────────────────────────
+  function gerarVCF(contacts) {
+    let vcf = '';
+    contacts.forEach(c => {
+      const phone = c.telefone.replace(/\D/g, '');
+      const num = phone.startsWith('55') ? phone : '55' + phone;
+      vcf += 'BEGIN:VCARD\nVERSION:3.0\n';
+      vcf += 'FN:' + c.nome + '\n';
+      vcf += 'TEL;TYPE=CELL:+' + num + '\n';
+      if (c.categoria) vcf += 'CATEGORIES:Família Cardoso - ' + c.categoria.charAt(0).toUpperCase() + c.categoria.slice(1) + '\n';
+      vcf += 'END:VCARD\n';
+    });
+    return vcf;
+  }
+
+  function downloadContacts(cat) {
+    const lista = cat === 'todos' ? allContacts : allContacts.filter(c => c.categoria === cat);
+    if (!lista.length) { alert('Nenhum contato encontrado para esta categoria.'); return; }
+    const vcf  = gerarVCF(lista);
+    const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url;
+    a.download = (cat === 'todos' ? 'familia_cardoso_todos' : 'familia_cardoso_' + cat) + '.vcf';
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+    fecharModalDownload();
+  }
+
+  const downloadModalOverlay  = document.getElementById('downloadModalOverlay');
+  const openDownloadModalBtn  = document.getElementById('openDownloadModal');
+  const closeDownloadModalBtn = document.getElementById('closeDownloadModal');
+
+  openDownloadModalBtn.addEventListener('click', () => downloadModalOverlay.classList.add('open'));
+  function fecharModalDownload() { downloadModalOverlay.classList.remove('open'); }
+  closeDownloadModalBtn.addEventListener('click', fecharModalDownload);
+  downloadModalOverlay.addEventListener('click', e => { if (e.target === downloadModalOverlay) fecharModalDownload(); });
+
+  // ── MODAL SUGESTÃO ─────────────────────────────────────────
   const fabSuggest   = document.getElementById('fabSuggest');
   const modalOverlay = document.getElementById('modalOverlay');
   const modalClose   = document.getElementById('modalClose');
@@ -1518,11 +1666,8 @@
   const panelTexto   = document.getElementById('panelTexto');
   const panelContato = document.getElementById('panelContato');
 
-  function openModal() { modalOverlay.classList.add('open'); }
-  function closeModal() {
-    modalOverlay.classList.remove('open');
-    resetForms();
-  }
+  function openModal()  { modalOverlay.classList.add('open'); }
+  function closeModal() { modalOverlay.classList.remove('open'); resetForms(); }
 
   fabSuggest.addEventListener('click', openModal);
   modalClose.addEventListener('click', closeModal);
@@ -1534,20 +1679,18 @@
     panelTexto.classList.toggle('active', tab === 'texto');
     panelContato.classList.toggle('active', tab === 'contato');
   }
-
   tabTexto.addEventListener('click', () => switchTab('texto'));
   tabContato.addEventListener('click', () => switchTab('contato'));
 
   function resetForms() {
-    document.getElementById('suggestText').value = '';
-    document.getElementById('contactName').value = '';
+    document.getElementById('suggestText').value  = '';
+    document.getElementById('contactName').value  = '';
     document.getElementById('contactPhone').value = '';
-    document.getElementById('contactNote').value = '';
+    document.getElementById('contactNote').value  = '';
     document.getElementById('pickedContact').classList.remove('show');
     switchTab('texto');
   }
 
-  // ==================== CONTACT PICKER API ====================
   const pickContactBtn = document.getElementById('pickContactBtn');
   const pickedContact  = document.getElementById('pickedContact');
   const pickedName     = document.getElementById('pickedName');
@@ -1556,65 +1699,41 @@
   const pickedRemove   = document.getElementById('pickedRemove');
 
   pickContactBtn.addEventListener('click', async () => {
-    // Contact Picker API (Chrome Android 80+)
     if ('contacts' in navigator && 'ContactsManager' in window) {
       try {
-        const props = ['name', 'tel'];
-        const opts = { multiple: false };
-        const contacts = await navigator.contacts.select(props, opts);
+        const contacts = await navigator.contacts.select(['name','tel'], { multiple: false });
         if (contacts && contacts.length > 0) {
           const c = contacts[0];
-          const name = (c.name && c.name[0]) || 'Sem nome';
-          const tel = (c.tel && c.tel[0]) || 'Sem telefone';
-          fillPickedContact(name, tel);
+          fillPickedContact((c.name && c.name[0]) || 'Sem nome', (c.tel && c.tel[0]) || '');
         }
-      } catch (err) {
-        console.log('Contact Picker cancelado ou erro:', err);
-      }
+      } catch (err) { console.log('Contact Picker cancelado:', err); }
     } else {
-      // Fallback: avisa e foca no campo manual
       alert('Seu navegador não suporta abrir a agenda diretamente. Por favor, digite o contato manualmente nos campos abaixo.');
       document.getElementById('contactName').focus();
     }
   });
 
   function fillPickedContact(name, tel) {
-    pickedName.textContent = name;
-    pickedPhone.textContent = formatPhone(tel);
-    const initials = getInitials(name);
-    pickedAvatar.textContent = initials;
+    pickedName.textContent   = name;
+    pickedPhone.textContent  = formatPhone(tel);
+    pickedAvatar.textContent = getInitials(name);
     pickedContact.classList.add('show');
-    // Preenche campos manuais também
-    document.getElementById('contactName').value = name;
+    document.getElementById('contactName').value  = name;
     document.getElementById('contactPhone').value = tel;
   }
 
   pickedRemove.addEventListener('click', () => {
     pickedContact.classList.remove('show');
-    document.getElementById('contactName').value = '';
+    document.getElementById('contactName').value  = '';
     document.getElementById('contactPhone').value = '';
   });
 
-  // ==================== ENVIO PARA GOOGLE APPS SCRIPT ====================
   async function sendToSheet(payload) {
-    if (APPS_SCRIPT_URL.includes('COLE_AQUI')) {
-      alert('⚠️ Configure a URL do Google Apps Script!\n\nVeja o arquivo de instruções para saber como.');
-      return false;
-    }
-
+    if (APPS_SCRIPT_URL.includes('COLE_AQUI')) { alert('⚠️ Configure a URL do Google Apps Script!'); return false; }
     try {
-      const res = await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify(payload)
-      });
+      await fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(payload) });
       return true;
-    } catch (err) {
-      console.error('Erro ao enviar:', err);
-      alert('Erro ao enviar. Verifique sua conexão e tente novamente.');
-      return false;
-    }
+    } catch (err) { console.error('Erro ao enviar:', err); alert('Erro ao enviar. Verifique sua conexão.'); return false; }
   }
 
   function showSuccessToast() {
@@ -1625,67 +1744,32 @@
   }
 
   function setLoading(btn, loading) {
-    if (loading) {
-      btn.disabled = true;
-      btn.dataset.originalHtml = btn.innerHTML;
-      btn.innerHTML = '<span class="btn-spinner"></span> Enviando...';
-    } else {
-      btn.disabled = false;
-      btn.innerHTML = btn.dataset.originalHtml || 'Enviar';
-    }
+    if (loading) { btn.disabled = true; btn.dataset.originalHtml = btn.innerHTML; btn.innerHTML = '<span class="btn-spinner"></span> Enviando...'; }
+    else { btn.disabled = false; btn.innerHTML = btn.dataset.originalHtml || 'Enviar'; }
   }
 
-  // Enviar TEXTO
   document.getElementById('submitTexto').addEventListener('click', async () => {
     const text = document.getElementById('suggestText').value.trim();
-    if (!text) {
-      document.getElementById('suggestText').style.borderColor = '#e74c3c';
-      setTimeout(() => document.getElementById('suggestText').style.borderColor = '', 1500);
-      return;
-    }
-
+    if (!text) { document.getElementById('suggestText').style.borderColor = '#e74c3c'; setTimeout(() => document.getElementById('suggestText').style.borderColor = '', 1500); return; }
     const btn = document.getElementById('submitTexto');
     setLoading(btn, true);
-
-    const ok = await sendToSheet({
-      tipo: '📝 Sugestão',
-      nome: '',
-      telefone: '',
-      mensagem: text
-    });
-
+    const ok = await sendToSheet({ tipo: '📝 Sugestão', nome: '', telefone: '', mensagem: text });
     setLoading(btn, false);
     if (ok) showSuccessToast();
   });
 
-  // Enviar CONTATO
   document.getElementById('submitContato').addEventListener('click', async () => {
     const name  = document.getElementById('contactName').value.trim();
     const phone = document.getElementById('contactPhone').value.trim();
     const note  = document.getElementById('contactNote').value.trim();
-
     if (!name || !phone) {
-      if (!name) {
-        document.getElementById('contactName').style.borderColor = '#e74c3c';
-        setTimeout(() => document.getElementById('contactName').style.borderColor = '', 1500);
-      }
-      if (!phone) {
-        document.getElementById('contactPhone').style.borderColor = '#e74c3c';
-        setTimeout(() => document.getElementById('contactPhone').style.borderColor = '', 1500);
-      }
+      if (!name) { document.getElementById('contactName').style.borderColor = '#e74c3c'; setTimeout(() => document.getElementById('contactName').style.borderColor = '', 1500); }
+      if (!phone) { document.getElementById('contactPhone').style.borderColor = '#e74c3c'; setTimeout(() => document.getElementById('contactPhone').style.borderColor = '', 1500); }
       return;
     }
-
     const btn = document.getElementById('submitContato');
     setLoading(btn, true);
-
-    const ok = await sendToSheet({
-      tipo: '📱 Contato',
-      nome: name,
-      telefone: phone,
-      mensagem: note
-    });
-
+    const ok = await sendToSheet({ tipo: '📱 Contato', nome: name, telefone: phone, mensagem: note });
     setLoading(btn, false);
     if (ok) showSuccessToast();
   });
